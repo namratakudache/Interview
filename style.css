@@ -1,0 +1,51 @@
+
+*{
+margin: 0;
+padding: 0;
+text-align: center;
+}
+h1{
+    color:white;
+    height: 3 rem;
+    padding:20px;
+    background-color: rgb(31, 31, 63);
+}
+.img1{
+    width: 100px;
+    height: 100px;
+    margin: 40px;
+    border-radius: 200px;
+    padding: 10px;
+    background-color: rgb(208, 239, 243);
+    border:1px solid rgb(201, 198, 198);
+    }
+    .img1:hover{
+        border:1.5px solid rgb(29, 147, 225);
+    
+    }
+.choices{
+  padding: 50px;
+   justify-content: center;
+    display: flex;
+}
+.choice{
+cursor: pointer;
+  }
+
+
+.scoreboard{
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(192, 245, 245);
+ 
+}
+.score{
+    margin-top: 10px;
+    margin:20px;
+    justify-content:center;
+}
+#msg{
+    padding: 20px;
+    font-size: 4rem;
+}
