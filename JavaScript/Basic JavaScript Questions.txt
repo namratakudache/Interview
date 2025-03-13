@@ -1,0 +1,33 @@
+Basic JavaScript Questions:
+What is the difference between null and undefined?
+What are primitive and reference types in JavaScript?
+Explain the difference between == and ===.
+How does JavaScript handle asynchronous code execution?
+What are closures in JavaScript? Can you give an example?
+What is the difference between let, const, and var?
+How does hoisting work in JavaScript?
+What is event delegation, and how does it improve performance?
+Explain the difference between synchronous and asynchronous JavaScript.
+What is the purpose of the this keyword in JavaScript? How does it behave in different contexts?
+Intermediate JavaScript Questions:
+What is the difference between call(), apply(), and bind()?
+What is a closure, and why is it useful?
+How does prototypal inheritance work in JavaScript?
+What are arrow functions, and how do they differ from regular functions?
+Explain the concept of promise in JavaScript. How does it help with asynchronous operations?
+What are the different ways to create objects in JavaScript?
+What is the difference between map(), forEach(), filter(), and reduce()?
+Explain setTimeout() and setInterval(). What are the differences?
+What is the difference between shallow copy and deep copy in JavaScript?
+How do you deep clone an object in JavaScript?
+Advanced JavaScript & Performance Questions:
+What is the event loop, and how does it work in JavaScript?
+How do async and await work in JavaScript?
+What are WeakMap and WeakSet in JavaScript?
+What is debouncing and throttling? How do they help in performance optimization?
+How does garbage collection work in JavaScript?
+What are generators in JavaScript, and how do they work?
+What is the difference between localStorage, sessionStorage, and cookies?
+What are Web Workers, and how do they improve JavaScript performance?
+What is the difference between document.querySelector() and document.getElementById()?
+What are JavaScript modules, and why do we use them?

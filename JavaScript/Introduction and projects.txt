@@ -1,0 +1,63 @@
+Hi Ketan, Good Evening,
+
+I'm Namrata Kudache, a Frontend Developer with 2+ years of experience in JavaScript and React.js. I specialize in building high-performance web applications and focused on user experience and responsive design.
+
+I've worked on projects like:
+✅ OSIONE – A web-based business management application for timesheets, leave tracking, invoicing, and resource management.
+✅ Vibrant Living – An e-commerce food ordering delivery platform.
+
+My Key Responsibilities:
+✔ Developing reusable and interactive React components (tables, buttons, dropdowns).
+✔ Optimizing UI performance (lazy loading, code splitting, useMemo(), useCallback(), React.memo).
+✔ Enhancing API efficiency (debouncing for search, throttling for event handling).
+✔ Implementing state management techniques using Context API and Redux for scalability.
+
+I'm excited about this opportunity and look forward to contributing to your team!
+Thank you.
+
+Current Work: Leave Request Feature in OSIONE
+🚀 I’m currently working on implementing a Leave Request feature in OSIONE, allowing employees to submit leave requests, track approvals, and view their leave balance.
+
+My Contributions:
+✔ Building a user-friendly leave request form in React.js with TypeScript for better validations.
+✔ Integrating APIs to submit leave requests and retrieve approval status.
+✔ Implementing form validation to prevent invalid inputs (e.g., selecting past dates).
+✔ Adding real-time updates so users see status changes instantly without refreshing the page (using React Query).
+✔ Optimizing state management with React Context to reduce unnecessary re-renders.
+
+ Challenge: Handling API Errors & Network Failures
+Problem:
+APIs sometimes failed due to network issues, resulting in a bad user experience.
+
+Solution:
+✅ Implemented Axios Interceptors to handle errors globally.
+✅ Graceful Error Handling with React Query.
+✅ Displayed user-friendly error messages instead of just console errors.
+
+ Axios interceptors is used to streamline API calls. We added a request interceptor to automatically attach JWT tokens to all requests, ensuring authentication. We also implemented a response interceptor to handle errors globally, redirecting users if they are unauthorized. Additionally, we integrated a refresh token mechanism to renew expired tokens, preventing frequent logouts and enhancing user experience."
+
+ What is a Custom Hook?
+A custom hook is a reusable JS function in React that encapsulates stateful logic and can be shared across multiple components. It starts with the prefix "use" (e.g., useAuth, useFetch, useDebounce).
+
+📌 Why use Custom Hooks?
+✔ Reusability – Avoid repeating the same logic in multiple components.
+✔ Separation of concerns – Keeps components clean by moving logic to a separate file.
+✔ Better maintainability – Any change to logic updates all components that use the hook.
+🔹 Problem:
+We need to fetch data from an API in multiple components, but writing fetch() logic everywhere leads to duplicate code.
+
+🔹 Solution:
+Create a custom hook useFetch that:
+
+Fetches data from an API.
+Handles loading, error, and response state.
+Automatically re-fetches when the API URL changes.
+
+
+React Query is a powerful data-fetching library that simplifies API calls, caching, and state management in React applications.
+Why Use React Query?
+✅ Simplifies API Calls – No need for manual useEffect or useState for API calls.
+✅ Automatic Caching – Prevents unnecessary requests by caching API responses.
+✅ Background Refetching – Keeps data up to date without a full page reload.
+✅ Error Handling – Built-in retry mechanisms for failed requests.
+✅ Infinite Scrolling & Pagination – Efficient data loading for large lists.
