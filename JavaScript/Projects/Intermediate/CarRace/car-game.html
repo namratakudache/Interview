@@ -127,6 +127,7 @@
         .e-carimg {
             width: 200px;
             height: 200px;
+            /* border:1px solid red */
         }
         #mycar {
             position: absolute;
@@ -135,6 +136,7 @@
             transform: translateX(-50%); /* Center the car horizontally */
             z-index: 102; /* Ensure the player's car is above other elements */
             transition: left 0.2s ease-in-out;
+            /* border:1px solid rgb(11, 225, 29) */
         }
         #mycarimg {
             width: 100px;
@@ -183,19 +185,22 @@
         
         <div id="enemyCar3" class="enemyCar"><img class="e-carimg" src="car1.png"></div>
         <div id="enemyCar4" class="enemyCar"><img class="e-carimg" src="car1.png   "></div>
-        <div id="enemyCar5" class="enemyCar"><img class="e-carimg" src="car1.png"></div>
+    
         <div id="mycar"><img id="mycarimg" src="mycar.png"></div>
     </body>
     <script>
-   document.addEventListener("DOMContentLoaded", function () {
+       let n = 0;
+let moveInterval = null;
+let keysPressed = {};
+let collisionInterval;
+let scoreInterval;
+
+document.addEventListener("DOMContentLoaded", function () {
     const myCar = document.getElementById("mycar");
     let carPositionX = 50; // Initial X position (%)
     let carPositionY = 80; // Initial Y position (%)
     const step = 2; // Speed of movement
-    let moveInterval = null; // To store interval reference
-    let keysPressed = {}; // Track pressed keys
 
-    // Function to move car
     function moveCar() {
         if (keysPressed["ArrowLeft"] && carPositionX > 10) {
             carPositionX -= step;
@@ -214,7 +219,6 @@
         myCar.style.top = carPositionY + "%";
     }
 
-    // Start movement on key press
     document.addEventListener("keydown", function (event) {
         if (!keysPressed[event.key]) {
             keysPressed[event.key] = true;
@@ -224,7 +228,6 @@
         }
     });
 
-    // Stop movement on key release
     document.addEventListener("keyup", function (event) {
         delete keysPressed[event.key];
         if (Object.keys(keysPressed).length === 0) {
@@ -234,34 +237,73 @@
     });
 });
 
-        document.getElementById("start").addEventListener("click", function () {
-            document.getElementById("start").style.display = "none";
-            document.getElementById("road").style.animation = "roadanimation 20s linear infinite";
+// Start Game
+document.getElementById("start").addEventListener("click", function () {
+    document.getElementById("start").style.display = "none";
+    document.getElementById("road").style.animation = "roadanimation 20s linear infinite";
 
-            setInterval(()=>{
-                num=Math.floor(Math.random()*(250-150+1)+150)
-                document.getElementById("enemyCar1").style.left=`${num}px`
-            },3000)
-            setInterval(()=>{
-                num=Math.floor(Math.random()*(150-150+1)+50)
-                document.getElementById("enemyCar2").style.left=`${num}px`
-            },6000)
-            setInterval(()=>{
-                num=Math.floor(Math.random()*(-50-140+1)-140)
-                document.getElementById("enemyCar3").style.left=`${num}px`
-            },5000)
-            setInterval(()=>{
-                num=Math.floor(Math.random()*(-220+330+1)-330)
-                document.getElementById("enemyCar4").style.left=`${num}px`
-            },4000)
-          
-            document.getElementById("enemyCar1").style.animation = "ecar1 3s linear infinite";
-            document.getElementById("enemyCar2").style.animation = "ecar2 6s linear infinite";
-            document.getElementById("enemyCar3").style.animation = "ecar3 5s linear infinite";
-            document.getElementById("enemyCar4").style.animation = "ecar4 4s linear infinite";
-            document.getElementById("enemyCar5").style.animation = "ecar5 2s linear infinite";
+    // Enemy car movement
+    setInterval(() => {
+        let num = Math.floor(Math.random() * (250 - 150 + 1) + 150);
+        document.getElementById("enemyCar1").style.left = `${num}px`;
+    }, 3000);
+    setInterval(() => {
+        let num = Math.floor(Math.random() * (150 - 150 + 1) + 50);
+        document.getElementById("enemyCar2").style.left = `${num}px`;
+    }, 6000);
+    setInterval(() => {
+        let num = Math.floor(Math.random() * (-50 - 140 + 1) - 140);
+        document.getElementById("enemyCar3").style.left = `${num}px`;
+    }, 5000);
+    setInterval(() => {
+        let num = Math.floor(Math.random() * (-220 + 330 + 1) - 330);
+        document.getElementById("enemyCar4").style.left = `${num}px`;
+    }, 4000);
 
-            
-        });
+    // Start enemy car animations
+    document.getElementById("enemyCar1").style.animation = "ecar1 3s linear infinite";
+    document.getElementById("enemyCar2").style.animation = "ecar2 6s linear infinite";
+    document.getElementById("enemyCar3").style.animation = "ecar3 5s linear infinite";
+    document.getElementById("enemyCar4").style.animation = "ecar4 4s linear infinite";
+
+    // Score Update
+    scoreInterval = setInterval(() => {
+        document.getElementById("score").innerText = `Score: ${n}`;
+        n++;
+        console.log(n);
+    }, 100);
+
+    
+    // Start Collision Detection
+    collisionInterval = setInterval(checkCollision, 20);
+});
+
+// Collision Detection
+function checkCollision() {
+    let myCar = document.getElementById("mycarimg").getBoundingClientRect();
+    let enemies = ["enemyCar1", "enemyCar2", "enemyCar3", "enemyCar4"];
+
+    for (let enemyId of enemies) {
+        let enemy = document.getElementById(enemyId).getBoundingClientRect();
+
+        let isColliding = !(
+            myCar.right < enemy.left || // My car is left of enemy
+            myCar.left > enemy.right || // My car is right of enemy
+            myCar.bottom < enemy.top || // My car is above enemy
+            myCar.top > enemy.bottom // My car is below enemy
+        );
+
+        if (isColliding) {
+            console.log("🚨 Collision Detected!");
+            alert("Game Over");
+            clearInterval(scoreInterval);
+            clearInterval(collisionInterval);
+            return;
+        }
+    }
+}
+
     </script>
+    
+    
     </html>
