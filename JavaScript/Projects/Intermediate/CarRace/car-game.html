@@ -27,7 +27,7 @@
         background-size: cover; /* Adjusts size to fit */
         
         height: 150vh; /* Ensures enough height for movement */
-        width: 600px; /* Road width */
+        width: 1000px; /* Road width */
         
         position: absolute; /* Absolute positioning */
         left: 50%; /* Center horizontally */
@@ -76,28 +76,54 @@
             z-index: 101; /* Ensure enemy cars are above the road */
         }
         #enemyCar1 {
-            left:500px; /* Adjusted position */
+            width: 100px;
+            height: 100px;
+         
+            z-index: inherit;
+            position: relative;
+            left: 310px;/* Adjusted position */
             /* animation: ecar1 1s linear infinite; */
         
         }
         #enemyCar2 {
-            left: 600px; /* Adjusted position */
-            /* animation: ecar2 2s linear infinite; */
-            /* transform: rotate(180deg); */
+             /* display: grid;
+        place-items: center; */
+        position: relative;
+        width: 100px;
+        height: 100px;
+        left: 100px;
+        /* left: 150px; */
+        z-index: 1001;
+        /* animation: ecar2 infinite linear 4s; */
         
         }
         #enemyCar3 {
-            left: 750px; /* Adjusted position */
-            /* animation: ecar3 1s linear infinite; */
+            /* display: grid;
+        place-items: center; */
+        position: relative;
+        width: 100px;
+        height: 100px;
+        left: -100px;
+        /* left: -50px; */
+        /* left: -140px; */
+        z-index: 1001;
+        /* animation: ecar3 infinite linear 6s; */
         }
         #enemyCar4 {
-            left: 850px; /* Adjusted position */
-            /* animation: ecar4 2s linear infinite; */
+          /* display: grid;
+        place-items: center; */
+        position: relative;
+        width: 100px;
+        height: 100px;
+        left: -300px;
+        /* left: -330px; */
+        /* left: -220px; */
+        top: -250px;
+        z-index: 1001;
+        /* animation: ecar4 infinite linear 2s; */
+
         }
-        #enemyCar5 {
-            left: 900px; /* Adjusted position */
-            /* animation: ecar4 3s linear infinite; */
-        }
+    
         .e-carimg {
             width: 200px;
             height: 200px;
@@ -108,6 +134,7 @@
             left: 50%;
             transform: translateX(-50%); /* Center the car horizontally */
             z-index: 102; /* Ensure the player's car is above other elements */
+            transition: left 0.2s ease-in-out;
         }
         #mycarimg {
             width: 100px;
@@ -145,14 +172,7 @@
                 top: 100vh;
             }
         }
-        @keyframes ecar5 {
-            0% {
-                top: -80vh;
-            }
-            100% {
-                top: 100vh;
-            }
-        }
+      
     </style>
     <body>
         <div id="score">Score: 0</div>
@@ -167,14 +187,79 @@
         <div id="mycar"><img id="mycarimg" src="mycar.png"></div>
     </body>
     <script>
+   document.addEventListener("DOMContentLoaded", function () {
+    const myCar = document.getElementById("mycar");
+    let carPositionX = 50; // Initial X position (%)
+    let carPositionY = 80; // Initial Y position (%)
+    const step = 2; // Speed of movement
+    let moveInterval = null; // To store interval reference
+    let keysPressed = {}; // Track pressed keys
+
+    // Function to move car
+    function moveCar() {
+        if (keysPressed["ArrowLeft"] && carPositionX > 10) {
+            carPositionX -= step;
+        }
+        if (keysPressed["ArrowRight"] && carPositionX < 90) {
+            carPositionX += step;
+        }
+        if (keysPressed["ArrowUp"] && carPositionY > 10) {
+            carPositionY -= step;
+        }
+        if (keysPressed["ArrowDown"] && carPositionY < 80) {
+            carPositionY += step;
+        }
+
+        myCar.style.left = carPositionX + "%";
+        myCar.style.top = carPositionY + "%";
+    }
+
+    // Start movement on key press
+    document.addEventListener("keydown", function (event) {
+        if (!keysPressed[event.key]) {
+            keysPressed[event.key] = true;
+            if (!moveInterval) {
+                moveInterval = setInterval(moveCar, 20); // Move every 20ms for smooth motion
+            }
+        }
+    });
+
+    // Stop movement on key release
+    document.addEventListener("keyup", function (event) {
+        delete keysPressed[event.key];
+        if (Object.keys(keysPressed).length === 0) {
+            clearInterval(moveInterval);
+            moveInterval = null;
+        }
+    });
+});
+
         document.getElementById("start").addEventListener("click", function () {
             document.getElementById("start").style.display = "none";
             document.getElementById("road").style.animation = "roadanimation 20s linear infinite";
+
+            setInterval(()=>{
+                num=Math.floor(Math.random()*(250-150+1)+150)
+                document.getElementById("enemyCar1").style.left=`${num}px`
+            },3000)
+            setInterval(()=>{
+                num=Math.floor(Math.random()*(150-150+1)+50)
+                document.getElementById("enemyCar2").style.left=`${num}px`
+            },6000)
+            setInterval(()=>{
+                num=Math.floor(Math.random()*(-50-140+1)-140)
+                document.getElementById("enemyCar3").style.left=`${num}px`
+            },5000)
+            setInterval(()=>{
+                num=Math.floor(Math.random()*(-220+330+1)-330)
+                document.getElementById("enemyCar4").style.left=`${num}px`
+            },4000)
+          
             document.getElementById("enemyCar1").style.animation = "ecar1 3s linear infinite";
-            document.getElementById("enemyCar2").style.animation = "ecar2 1s linear infinite";
-            document.getElementById("enemyCar3").style.animation = "ecar3 3s linear infinite";
-            document.getElementById("enemyCar4").style.animation = "ecar4 2s linear infinite";
-            document.getElementById("enemyCar5").style.animation = "ecar5 1s linear infinite";
+            document.getElementById("enemyCar2").style.animation = "ecar2 6s linear infinite";
+            document.getElementById("enemyCar3").style.animation = "ecar3 5s linear infinite";
+            document.getElementById("enemyCar4").style.animation = "ecar4 4s linear infinite";
+            document.getElementById("enemyCar5").style.animation = "ecar5 2s linear infinite";
 
             
         });
