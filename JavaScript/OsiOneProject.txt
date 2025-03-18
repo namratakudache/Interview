@@ -1,0 +1,30 @@
+Basic Questions:
+Can you briefly explain OSIONE and its key functionalities?
+What was your role in the OSIONE project?
+Which technologies did you use in this project and why?
+How does OSIONE handle timesheet and invoice management?
+What challenges did you face while developing OSIONE, and how did you resolve them?
+Technical & Problem-Solving Questions:
+How did you manage state in OSIONE?
+Did you use Redux, Context API, or React state? Why?
+How did you optimize the performance of the OSIONE application?
+Explain lazy loading, code splitting, memoization, React Profiler, etc.
+How does OSIONE handle API calls and data fetching?
+Did you use fetch, Axios, React Query, or RTK Query?
+How did you handle form validations in OSIONE?
+Explain usage of React Hook Form, Yup, or custom validation.
+How did you handle authentication and authorization in OSIONE?
+Did you use JWT, OAuth, or session-based authentication?
+Debugging & Issue Resolution Questions:
+Tell me about a bug you encountered in OSIONE and how you fixed it. (STAR Method)
+Did you face any memory leaks or performance issues? How did you debug them?
+How did you ensure smooth API integration without breaking the UI?
+Collaboration & Deployment Questions:
+How did you collaborate with backend developers in OSIONE?
+How did you handle version control and code reviews?
+Was OSIONE deployed to production? How did you manage CI/CD?
+Behavioral & Decision-Making Questions:
+Can you describe a time when you had to work under a tight deadline? (STAR Method)
+What was the most challenging feature in OSIONE, and how did you implement it?
+If you had to improve OSIONE today, what would you do differently?
+How would you scale OSIONE if the user base increases significantly?
